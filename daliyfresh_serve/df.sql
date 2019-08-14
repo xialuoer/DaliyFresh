@@ -1,0 +1,163 @@
+SET NAMES UTF8;
+DROP DATABASE IF EXISTS df;
+CREATE DATABASE df CHARSET=UTF8;
+USE df;
+/****商品表****/
+  CREATE TABLE product(
+    pid INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(64),
+    subtitle VARCHAR(64),
+    pic VARCHAR(128),
+    price DECIMAL(10,1),
+    original_price DECIMAL(10,1),
+    cid TINYINT
+  );
+  -- 商品分类表
+ CREATE TABLE classify(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    cname VARCHAR(64) 
+  );
+  -- 用户表
+CREATE TABLE user(
+  uid INT PRIMARY KEY AUTO_INCREMENT,
+  uname VARCHAR(16),
+  phone CHAR(11),
+  sex TINYINT,
+  upwd VARCHAR(32),
+  want VARCHAR(128)
+);
+/****购物车表****/
+  CREATE TABLE shoppingCart(
+    sid INT PRIMARY KEY AUTO_INCREMENT,
+    uid INT,
+    pid INT,
+    title VARCHAR(64),
+    pic VARCHAR(128),
+    price DECIMAL(10,1),
+    original_price DECIMAL(10,1)
+  );
+
+/****插入首页商品表数据****/
+  INSERT INTO product VALUES
+  (NULL, '进口香蕉一袋500g起', '跟鲜花一起运过来的香蕉', 'product/p1.jpg', 6.9, 12.9, 1),
+  (NULL, '番茄450-550g', '世界再大不过一盘番茄炒蛋', 'product/p2.jpg', 2.9, 3.9, 1),
+  (NULL, '黄瓜450-550g', '本地菜园种植 一口嘎嘣脆', 'product/p3.jpg', 1.9, 2.2, 1),
+  (NULL, '生菜300g起', '蔬菜沙拉少不了我', 'product/p4.jpg', 2.2, 2.9, 1),
+  (NULL, '祖名香干（茶干）150g', '酱香入味 怎么做都好吃', 'product/p5.jpg', 2.9, 3.5, 1),
+  (NULL, '越南红肉火龙果300g起', '小果品种 果肉尤其甜', 'product/p6.jpg', 6.9, 9.9, 1),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 1),
+  (NULL, '长南瓜500g', '脊宽肉厚 水分少 味甜', 'product/p8.jpg', 4.9, 5.9, 1),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 1),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 1),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 2),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 2),
+  (NULL, '进口香蕉一袋500g起', '跟鲜花一起运过来的香蕉', 'product/p1.jpg', 6.9, 12.9, 2),
+  (NULL, '番茄450-550g', '世界再大不过一盘番茄炒蛋', 'product/p2.jpg', 2.9, 3.9, 2),
+  (NULL, '黄瓜450-550g', '本地菜园种植 一口嘎嘣脆', 'product/p3.jpg', 1.9, 2.2, 2),
+  (NULL, '生菜300g起', '蔬菜沙拉少不了我', 'product/p4.jpg', 2.2, 2.9, 2),
+  (NULL, '祖名香干（茶干）150g', '酱香入味 怎么做都好吃', 'product/p5.jpg', 2.9, 3.5, 2),
+  (NULL, '越南红肉火龙果300g起', '小果品种 果肉尤其甜', 'product/p6.jpg', 6.9, 9.9, 2),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 2),
+  (NULL, '长南瓜500g', '脊宽肉厚 水分少 味甜', 'product/p8.jpg', 4.9, 5.9, 2),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 3),
+  (NULL, '长南瓜500g', '脊宽肉厚 水分少 味甜', 'product/p8.jpg', 4.9, 5.9, 3),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 3),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 3),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 3),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 3),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 3),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 3),
+  (NULL, '黄瓜450-550g', '本地菜园种植 一口嘎嘣脆', 'product/p3.jpg', 1.9, 2.2, 4),
+  (NULL, '生菜300g起', '蔬菜沙拉少不了我', 'product/p4.jpg', 2.2, 2.9, 4),
+  (NULL, '祖名香干（茶干）150g', '酱香入味 怎么做都好吃', 'product/p5.jpg', 2.9, 3.5, 4),
+  (NULL, '越南红肉火龙果300g起', '小果品种 果肉尤其甜', 'product/p6.jpg', 6.9, 9.9, 4),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 4),
+  (NULL, '长南瓜500g', '脊宽肉厚 水分少 味甜', 'product/p8.jpg', 4.9, 5.9, 4),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 4),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 4),
+  (NULL, '番茄450-550g', '世界再大不过一盘番茄炒蛋', 'product/p2.jpg', 2.9, 3.9, 5),
+  (NULL, '黄瓜450-550g', '本地菜园种植 一口嘎嘣脆', 'product/p3.jpg', 1.9, 2.2, 5),
+  (NULL, '生菜300g起', '蔬菜沙拉少不了我', 'product/p4.jpg', 2.2, 2.9, 5),
+  (NULL, '祖名香干（茶干）150g', '酱香入味 怎么做都好吃', 'product/p5.jpg', 2.9, 3.5, 5),
+  (NULL, '越南红肉火龙果300g起', '小果品种 果肉尤其甜', 'product/p6.jpg', 6.9, 9.9, 5),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 5),
+  (NULL, '长南瓜500g', '脊宽肉厚 水分少 味甜', 'product/p8.jpg', 4.9, 5.9, 5),
+  (NULL, '越南红肉火龙果300g起', '小果品种 果肉尤其甜', 'product/p6.jpg', 6.9, 9.9, 6),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 6),
+  (NULL, '番茄450-550g', '世界再大不过一盘番茄炒蛋', 'product/p2.jpg', 2.9, 3.9, 6),
+  (NULL, '黄瓜450-550g', '本地菜园种植 一口嘎嘣脆', 'product/p3.jpg', 1.9, 2.2, 6),
+  (NULL, '生菜300g起', '蔬菜沙拉少不了我', 'product/p4.jpg', 2.2, 2.9, 6),
+  (NULL, '祖名香干（茶干）150g', '酱香入味 怎么做都好吃', 'product/p5.jpg', 2.9, 3.5, 6),
+  (NULL, '越南红肉火龙果300g起', '小果品种 果肉尤其甜', 'product/p6.jpg', 6.9, 9.9, 6),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 6),
+  (NULL, '长南瓜500g', '脊宽肉厚 水分少 味甜', 'product/p8.jpg', 4.9, 5.9, 7),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 7),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 7),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 7),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 7),
+  (NULL, '进口香蕉一袋500g起', '跟鲜花一起运过来的香蕉', 'product/p1.jpg', 6.9, 12.9, 7),
+  (NULL, '番茄450-550g', '世界再大不过一盘番茄炒蛋', 'product/p2.jpg', 2.9, 3.9, 7),
+  (NULL, '黄瓜450-550g', '本地菜园种植 一口嘎嘣脆', 'product/p3.jpg', 1.9, 2.2, 8),
+  (NULL, '生菜300g起', '蔬菜沙拉少不了我', 'product/p4.jpg', 2.2, 2.9, 8),
+  (NULL, '祖名香干（茶干）150g', '酱香入味 怎么做都好吃', 'product/p5.jpg', 2.9, 3.5, 8),
+  (NULL, '越南红肉火龙果300g起', '小果品种 果肉尤其甜', 'product/p6.jpg', 6.9, 9.9, 8),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 8),
+  (NULL, '长南瓜500g', '脊宽肉厚 水分少 味甜', 'product/p8.jpg', 4.9, 5.9, 8),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 9),
+  (NULL, '长南瓜500g', '脊宽肉厚 水分少 味甜', 'product/p8.jpg', 4.9, 5.9, 9),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 9),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 9),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 9),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 9),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 10),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 10),
+  (NULL, '黄瓜450-550g', '本地菜园种植 一口嘎嘣脆', 'product/p3.jpg', 1.9, 2.2, 10),
+  (NULL, '生菜300g起', '蔬菜沙拉少不了我', 'product/p4.jpg', 2.2, 2.9, 10),
+  (NULL, '祖名香干（茶干）150g', '酱香入味 怎么做都好吃', 'product/p5.jpg', 2.9, 3.5, 10),
+  (NULL, '越南红肉火龙果300g起', '小果品种 果肉尤其甜', 'product/p6.jpg', 6.9, 9.9, 10),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 11),
+  (NULL, '长南瓜500g', '脊宽肉厚 水分少 味甜', 'product/p8.jpg', 4.9, 5.9, 11),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 11),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 11),
+  (NULL, '番茄450-550g', '世界再大不过一盘番茄炒蛋', 'product/p2.jpg', 2.9, 3.9, 11),
+  (NULL, '黄瓜450-550g', '本地菜园种植 一口嘎嘣脆', 'product/p3.jpg', 1.9, 2.2, 11),
+  (NULL, '生菜300g起', '蔬菜沙拉少不了我', 'product/p4.jpg', 2.2, 2.9, 12),
+  (NULL, '祖名香干（茶干）150g', '酱香入味 怎么做都好吃', 'product/p5.jpg', 2.9, 3.5, 12),
+  (NULL, '越南红肉火龙果300g起', '小果品种 果肉尤其甜', 'product/p6.jpg', 6.9, 9.9, 12),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 12),
+  (NULL, '长南瓜500g', '脊宽肉厚 水分少 味甜', 'product/p8.jpg', 4.9, 5.9, 12),
+  (NULL, '祖名香干（茶干）150g', '酱香入味 怎么做都好吃', 'product/p5.jpg', 2.9, 3.5, 13),
+  (NULL, '越南红肉火龙果300g起', '小果品种 果肉尤其甜', 'product/p6.jpg', 6.9, 9.9, 13),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 13),
+  (NULL, '长南瓜500g', '脊宽肉厚 水分少 味甜', 'product/p8.jpg', 4.9, 5.9, 13),
+  (NULL, '切片冬瓜500g起', '皮薄肉厚 清热健脾良品', 'product/p9.jpg', 1.99, 4.8, 14),
+  (NULL, '上海青300-350g起', '清新小菜 轻掐可断的鲜嫩', 'product/p10.jpg', 1.9, 2.6, 14),
+  (NULL, '番茄450-550g', '世界再大不过一盘番茄炒蛋', 'product/p2.jpg', 2.9, 3.9, 14),
+  (NULL, '黄瓜450-550g', '本地菜园种植 一口嘎嘣脆', 'product/p3.jpg', 1.9, 2.2, 14),
+  (NULL, '生菜300g起', '蔬菜沙拉少不了我', 'product/p4.jpg', 2.2, 2.9, 15),
+  (NULL, '祖名香干（茶干）150g', '酱香入味 怎么做都好吃', 'product/p5.jpg', 2.9, 3.5, 15),
+  (NULL, '越南红肉火龙果300g起', '小果品种 果肉尤其甜', 'product/p6.jpg', 6.9, 9.9, 15),
+  (NULL, '香菇100g', '菇肉多又厚 吃起来特别嫩', 'product/p7.jpg', 1.6, 4.6, 16),
+  (NULL, '长南瓜500g', '脊宽肉厚 水分少 味甜', 'product/p8.jpg', 4.9, 5.9, 16)
+  ;
+
+
+
+-- 插入商品分类表数据
+INSERT INTO classify VALUES
+(NULL,'时令水果'),
+(NULL,'新鲜蔬菜'),
+(NULL,'水产海鲜'),
+(NULL,'肉禽蛋类'),
+(NULL,'卤味熟食'),
+(NULL,'安心乳品'),
+(NULL,'冰淇淋'),
+(NULL,'酒水饮料'),
+(NULL,'休闲零食'),
+(NULL,'烘培糕点'),
+(NULL,'方便速食'),
+(NULL,'粮油调味'),
+(NULL,'个护美妆'),
+(NULL,'家庭清洁'),
+(NULL,'厨房家居'),
+(NULL,'优鲜超市');
